@@ -22,9 +22,9 @@ updates:
     schedule:
       interval: weekly
     ignore:
-      # The internal GitHub Enterprise mirror only has these actions up to v4;
-      # a higher major would break the workflows there.
+      # The internal GitHub Enterprise mirror lags behind github.com (as of November 2026 it
+      # has actions/checkout only up to v4.2.2), and the same workflow files must run there,
+      # so all updates of these two actions are ignored. Revisit when the mirror catches up:
+      #   GH_HOST=github.sec.samsung.net gh api repos/actions/<name>/tags
       - dependency-name: 'actions/checkout'
-        update-types: ['version-update:semver-major']
       - dependency-name: 'actions/setup-node'
-        update-types: ['version-update:semver-major']
